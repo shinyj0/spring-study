@@ -6,7 +6,12 @@ public class MemberSeriviceImpl implements MemberService{
 
     //회원 찾으려면 memberrepository 필요함 그런데 인터페이스만 가지고 있으면 nullv 포인트 예외나옴
     //구연객체 선택해주어야함
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository ;//= new MemoryMemberRepository();
+//-> 인터페이스만!
+    public MemberSeriviceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository; //생성자를통해서
+    }
+
     @Override
     public void join(Member member) {
         memberRepository.save(member);

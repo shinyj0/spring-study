@@ -1,10 +1,20 @@
 package hello.core.member;
 
+import hello.core.AppConfig;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
-    MemberService memberService = new MemberSeriviceImpl();
+    //appconfig 방식으로 바꾸기
+    //MemberService memberService = new MemberSeriviceImpl();
+    MemberService memberService;
+
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        memberService= appConfig.memberService();
+    }
     @Test
     void join(){
 

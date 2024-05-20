@@ -1,5 +1,6 @@
-package hello.core;
+package hello.core.order;
 
+import hello.core.AppConfig;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberSeriviceImpl;
@@ -8,11 +9,20 @@ import hello.core.order.Order;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class OrderServiceTest {
-    MemberService memberService = new MemberSeriviceImpl();
-    OrderService orderService = new OrderServiceImpl();
+public class  OrderServiceTest {
+    MemberService memberService ;//= new MemberSeriviceImpl();
+    OrderService orderService;// = new OrderServiceImpl();
+
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        memberService= appConfig.memberService();
+        orderService = appConfig.orderService();
+
+    }
 
     @Test
     void createOrder(){
@@ -27,4 +37,3 @@ public class OrderServiceTest {
     }
 }
 
-//ee
